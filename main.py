@@ -153,7 +153,7 @@ def history(state: State):
             )
 
     
-
+    Button("Home", index)
     return Page(state, content)
 
 @route

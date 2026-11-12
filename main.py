@@ -153,8 +153,8 @@ def history(state: State):
             )
 
     
-    Button("Home", index)
-    return Page(state, content)
+    
+    return Page(state, content + [Button("Home", "index")])
 
 @route
 def comparison(state: State):
@@ -211,7 +211,7 @@ def leaderboard(state: State):
 
     
 
-    return Page(state, content)
+    return Page(state, content + [Button("Home", "index")])
 
 @route
 def about(state: State):

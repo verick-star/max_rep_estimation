@@ -152,7 +152,7 @@ def history(state: State):
                 ")"
             )
 
-    content.append(Button("Home", index))
+    
 
     return Page(state, content)
 
@@ -209,7 +209,7 @@ def leaderboard(state: State):
             )
             position += 1
 
-    content.append(Button("Home", index))
+    
 
     return Page(state, content)
 

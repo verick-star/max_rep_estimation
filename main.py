@@ -5,7 +5,7 @@ from dataclasses import dataclass
 hide_debug_information()
 set_website_title("1 Rep Max")
 set_site_information(author="Van Erickson",
-                     description="This website will predict a person 1 Rep Max for either bench press, squat, or deadlift based off of previous amounts of reps and weigth.",
+                     description="This website will predict a person 1 Rep Max for either bench press, squat, or deadlift based off of previous amounts of reps and weight.",
                      sources="The drafter documentation and Copilot LLM",
                      planning=["https://docs.google.com/document/d/1wJN3k1rGrB8Ny9avM_Wb5uqi4e7gfr0kTqzOgyP3qj4/edit?tab=t.0", "https://docs.google.com/document/d/1H47pgEkQBFCShDhxItnpazxp62HK1iWOSrWROEPZ5Zg/edit?tab=t.0", "Copilot LLM"],
                      links="https://verick-star.github.io/max_rep_estimation/"

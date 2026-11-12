@@ -222,9 +222,125 @@ def about(state: State):
         Button("Home", index)
     ])
 
+#Index Unit Test
+state = State("", 0.0, [], 0)
 
+assert_has(index(state), "1 Rep Max Calculator")
+assert_has(index(state), "Go to Calculator")
+assert_has(index(State("", 0.0, [], 0)),
+           "1 Rep Max Calculator")
 
+assert_has(index(State("", 0.0, [], 0)),
+           "Formula Info")
 
+assert_has(index(State("", 0.0, [], 0)),
+           "Leaderboard")
+
+#calculate_1rm Unit Test
+assert_equal(calculate_1rm(225, 5), 262.5)
+assert_equal(calculate_1rm(100, 10), 133.33)
+assert_equal(calculate_1rm(400, 3), 440.0)
+
+#formulas Unit Test
+assert_has(formulas(State("", 0.0, [], 0)),
+           "1RM Formula Information:")
+
+assert_has(formulas(State("", 0.0, [], 0)),
+           "Epley Formula")
+
+assert_has(formulas(State("", 0.0, [], 0)),
+           "262.5 lbs")
+
+#calculator Unit Test
+assert_has(calculator(State("", 0.0, [], 0)),
+           "Enter your name:")
+
+assert_has(calculator(State("", 0.0, [], 0)),
+           "Weight lifted (lbs):")
+
+assert_has(calculator(State("", 0.0, [], 0)),
+           "Calculate 1RM")
+
+#results Unit Test
+test_state = State("", 0.0, [], 0)
+
+results(
+    test_state,
+    "Alice",
+    150.0,
+    "Deadlift",
+    400.0,
+    3
+)
+
+assert_equal(test_state.name, "Alice")
+assert_equal(test_state.bodyweight, 150.0)
+assert_equal(test_state.total_calculations, 1)
+
+#history Unit Test
+assert_has(history(State("", 0.0, [], 0)),
+           "No lifts recorded.")
+lift1 = Lift("Bench Press", 225, 5, 262.5)
+
+test_state = State(
+    "Alice",
+    150.0,
+    [lift1],
+    1
+)
+
+assert_has(history(test_state),
+           "Bench Press")
+
+#comparison Unit Test
+lift1 = Lift("Bench Press", 225, 5, 262.5)
+lift2 = Lift("Deadlift", 400, 3, 440.0)
+
+test_state = State(
+    "Alice",
+    150.0,
+    [lift1, lift2],
+    2
+)
+
+assert_has(comparison(test_state),
+           "Best Lift:")
+
+assert_has(comparison(test_state),
+           "Deadlift")
+
+assert_has(comparison(test_state),
+           "440.0")
+
+#leaderboard Unit Test
+lift1 = Lift("Bench Press", 225, 5, 262.5)
+lift2 = Lift("Deadlift", 400, 3, 440.0)
+
+test_state = State(
+    "Alice",
+    150.0,
+    [lift1, lift2],
+    2
+)
+
+assert_has(leaderboard(test_state),
+           "Leaderboard:")
+
+assert_has(leaderboard(test_state),
+           "Deadlift")
+
+assert_has(leaderboard(test_state),
+           "Bench Press")
+
+#about Unit Test
+assert_has(about(State("", 0.0, [], 0)),
+           "About:")
+
+assert_has(about(State("", 0.0, [], 0)),
+           "Bench Press")
+
+assert_has(about(State("", 0.0, [], 0)),
+           "Deadlift")
 
 start_server(
     State(

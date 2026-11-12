@@ -2,8 +2,16 @@ from bakery import assert_equal
 from drafter import *
 from dataclasses import dataclass
 
-hide_debig_information()
+hide_debug_information()
 set_website_title("1 Rep Max")
+set_site_information(author="Van Erickson",
+                     description="This website will predict a person 1 Rep Max for either bench press, squat, or deadlift based off of previous amounts of reps and weigth.",
+                     sources="The drafter documentation and Copilot LLM",
+                     planning=["https://docs.google.com/document/d/1wJN3k1rGrB8Ny9avM_Wb5uqi4e7gfr0kTqzOgyP3qj4/edit?tab=t.0", "https://docs.google.com/document/d/1H47pgEkQBFCShDhxItnpazxp62HK1iWOSrWROEPZ5Zg/edit?tab=t.0", "Copilot LLM"],
+                     links=""
+
+    
+)
 set_website_framed(False)
 
 from bakery import assert_equal
@@ -178,6 +186,10 @@ def leaderboard(state: State):
     if len(state.history) == 0:
         content.append("No lifts recorded.")
     else:
+        """
+        the sorted() just sorts the list of lifts with the key being lift.max
+        so the new sorted list goes from highest max to lowest max
+        """
         sorted_lifts = sorted(
             state.history,
             key=lambda lift: lift.max,
